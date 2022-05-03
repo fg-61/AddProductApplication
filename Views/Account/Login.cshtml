@@ -13,15 +13,14 @@
 </div>
 <div class="login-box">
     <h2>Giriş</h2>
+    <div asp-validation-summary="All" class="text-danger"></div>
     <form method="post" asp-controller="Account" asp-action="Login">
         <div class="user-box">
-            <span asp-validation-for="UserName" class="text-danger"></span>
             <input type="text" asp-for="UserName" required="">
             <label>Kullanıcı Adı</label>
         </div>
         <div class="user-box">
             <input type="text" asp-for="Password" required="" />
-            <span asp-validation-for="Password" class="text-danger"></span>
             <label>Şifre</label>
         </div>
         <div class="remember-me">
