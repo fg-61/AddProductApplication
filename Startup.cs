@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProductApplication.Data;
+using ProductApplication.Extensions;
 using ProductApplication.Models.Identity;
 using System;
 
@@ -29,6 +31,10 @@ namespace ProductApplication
             {
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+
+                options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequiredLength = 5;
 
@@ -37,18 +43,19 @@ namespace ProductApplication
                 options.Lockout.AllowedForNewUsers = false;
 
                 options.User.RequireUniqueEmail = true;
-                options.User.AllowedUserNameCharacters =
-                    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
-            }).AddEntityFrameworkStores<MyContext>();
+
+            }).AddEntityFrameworkStores<MyContext>().AddDefaultTokenProviders();
 
             services.ConfigureApplicationCookie(options =>
             {
                 // Cookie settings
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+
                 options.LoginPath = "/Account/Login";
                 options.AccessDeniedPath = "/Account/AccessDenied";
                 options.SlidingExpiration = true;
             });
+            services.AddApplicationServices(this.Configuration);
 
         }
 
