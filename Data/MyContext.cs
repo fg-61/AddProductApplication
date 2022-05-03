@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using ProductApplication.Models.Entities;
 using ProductApplication.Models.Identity;
 
 namespace ProductApplication.Data
@@ -11,5 +12,20 @@ namespace ProductApplication.Data
         {
 
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<Product>()
+                .Property(x => x.UnitPrice)
+                .HasPrecision(8, 2);
+            builder.Entity<SparePart>()
+                .Property(x => x.UnitPrice)
+                .HasPrecision(8, 2);
+        }
+
+        public DbSet<Product> Products { get; set; }
+        public DbSet<SparePart> SpareParts { get; set; }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using ProductApplication.Models.Entities;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProductApplication.Models.Identity

@@ -29,6 +29,7 @@ namespace ProductApplication
             {
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
                 options.Password.RequiredLength = 5;
 
                 options.Lockout.MaxFailedAccessAttempts = 3;
