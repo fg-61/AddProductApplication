@@ -1,5 +1,6 @@
 ﻿using ProductApplication.Models.Abstracts;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,8 +14,7 @@ namespace ProductApplication.Models.Entities
         public string Code { get; set; }
         [Required]
         public decimal UnitPrice { get; set; }
-        public Guid ProductId { get; set; }
-        [ForeignKey(nameof(ProductId))]
-        public virtual Product Product { get; set; }
+        public ICollection<ProductSparePart> ProductSpareParts { get; set; }
+
     }
 }

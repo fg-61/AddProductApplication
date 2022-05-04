@@ -84,7 +84,7 @@ namespace ProductApplication
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Account}/{action=Login}/{id?}");
+                    pattern: "{controller=Product}/{action=GetAllProduct}/{id?}");
             });
         }
     }

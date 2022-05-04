@@ -23,9 +23,12 @@ namespace ProductApplication.Data
             builder.Entity<SparePart>()
                 .Property(x => x.UnitPrice)
                 .HasPrecision(8, 2);
+            builder.Entity<ProductSparePart>()
+                .HasKey(x => new { x.ProductId, x.SparePartId });
         }
 
         public DbSet<Product> Products { get; set; }
         public DbSet<SparePart> SpareParts { get; set; }
+        public DbSet<ProductSparePart> ProducSpareParts { get; set; }
     }
 }

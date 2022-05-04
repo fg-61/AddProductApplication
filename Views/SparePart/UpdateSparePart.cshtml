@@ -1,0 +1,25 @@
+﻿@model SparePart
+@{
+    ViewBag.Title = @Model.Name;
+}
+<div class="text-center col-lg-4">
+    <form method="post" asp-controller="SparePart" asp-action="UpdateSparePart">
+        <div class="form-group">
+            <p class="col-form-label" style="text-align:left;">Ürün Adı:</p>
+            <input type="text" value=@Model.Name class="form-control" name="Name" id="sparePart-name">
+        </div>
+        <div class="form-group">
+            <p class="col-form-label" style="text-align:left;">Ürün Kodu:</p>
+            <input type="text" value=@Model.Code class="form-control" name="Code" id="sparePart-code">
+        </div>
+        <div class="form-group">
+            <p class="col-form-label" style="text-align:left;">Fiyat:</p>
+            <input type="number" min="0" value=@Model.UnitPrice.ToString().Replace(',','.') class="form-control" name="UnitPrice"  id="sparePart-price">
+        </div>
+        <br>
+        <div class="justify-content-center">
+            <a class="btn btn-secondary" asp-controller="SparePart" asp-action="GetAllSparePart">İptal Et</a>
+            <button type="submit" id="save-product" class="btn btn-primary">Kaydet</button>
+        </div>
+    </form>
+</div>

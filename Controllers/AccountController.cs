@@ -89,7 +89,7 @@ namespace ProductApplication.Controllers
 
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Home", new { area = "" });
+                return RedirectToAction("GetProduct", "Product", new { area = "" });
             }
             else
             {

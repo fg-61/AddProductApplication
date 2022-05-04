@@ -59,8 +59,11 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    color: #404E67;
+    background: #F5F7FA;
+    font-family: 'Open Sans', sans-serif;
 }
 .footer {
   position: absolute;
@@ -236,4 +239,8 @@ body {
     margin-bottom: 20px;
 }
 
-  
+
+.table td, .table th {
+    vertical-align: inherit !important;
+}
+

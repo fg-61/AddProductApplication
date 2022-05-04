@@ -12,6 +12,7 @@ namespace ProductApplication.Extensions
 
             services.AddScoped<ProductRepo>();
             services.AddScoped<SparePartRepo>();
+            services.AddScoped<ProductSparePartRepo>();
             //loose coupling
 
 

@@ -13,6 +13,6 @@ namespace ProductApplication.Models.Entities
         public string Code { get; set; }
         [Required]
         public decimal UnitPrice { get; set; }
-        public virtual List<SparePart> SpareParts { get; set; }
+        public ICollection<ProductSparePart> ProductSpareParts { get; set; }
     }
 }

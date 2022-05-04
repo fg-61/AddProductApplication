@@ -1,0 +1,21 @@
+﻿@model SparePart
+@{
+    ViewBag.Title = @Model.Name + " Detay";
+}
+<div class="text-center col-lg-4">
+        <div class="form-group">
+            <p class="col-form-label" style="text-align:left;">Ürün Adı:</p>
+            <input type="text" value=@Model.Name class="form-control" name="Name" id="sparePart-name" disabled>
+        </div>
+        <div class="form-group">
+            <p class="col-form-label" style="text-align:left;" disabled>Ürün Kodu:</p>
+            <input type="text" value=@Model.Code class="form-control" name="Code" id="sparePart-code" disabled>
+        </div>
+        <div class="form-group">
+            <p class="col-form-label" style="text-align:left;">Fiyat:</p>
+            <input type="text" min="0" value=@Model.UnitPrice class="form-control" name="UnitPrice"  id="sparePart-price" disabled>
+        </div>
+        <div class="justify-content-center">
+            <a class="btn btn-secondary" asp-controller="SparePart" asp-action="GetAllSparePart">Geri</a>
+        </div>
+</div>

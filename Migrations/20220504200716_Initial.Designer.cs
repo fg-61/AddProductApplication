@@ -10,8 +10,8 @@ using ProductApplication.Data;
 namespace ProductApplication.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20220503181309_Product-SpareParts")]
-    partial class ProductSpareParts
+    [Migration("20220504200716_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -164,6 +164,38 @@ namespace ProductApplication.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("ProductApplication.Models.Entities.ProductSparePart", b =>
+                {
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("SparePartId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedUser")
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
+
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedUser")
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
+
+                    b.HasKey("ProductId", "SparePartId");
+
+                    b.HasIndex("SparePartId");
+
+                    b.ToTable("ProducSpareParts");
+                });
+
             modelBuilder.Entity("ProductApplication.Models.Entities.SparePart", b =>
                 {
                     b.Property<Guid>("Id")
@@ -187,9 +219,6 @@ namespace ProductApplication.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<decimal>("UnitPrice")
                         .HasPrecision(8, 2)
                         .HasColumnType("decimal(8,2)");
@@ -202,8 +231,6 @@ namespace ProductApplication.Migrations
                         .HasColumnType("nvarchar(128)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("SpareParts");
                 });
@@ -366,20 +393,33 @@ namespace ProductApplication.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ProductApplication.Models.Entities.SparePart", b =>
+            modelBuilder.Entity("ProductApplication.Models.Entities.ProductSparePart", b =>
                 {
                     b.HasOne("ProductApplication.Models.Entities.Product", "Product")
-                        .WithMany("SpareParts")
+                        .WithMany("ProductSpareParts")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ProductApplication.Models.Entities.SparePart", "SparePart")
+                        .WithMany("ProductSpareParts")
+                        .HasForeignKey("SparePartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Product");
+
+                    b.Navigation("SparePart");
                 });
 
             modelBuilder.Entity("ProductApplication.Models.Entities.Product", b =>
                 {
-                    b.Navigation("SpareParts");
+                    b.Navigation("ProductSpareParts");
+                });
+
+            modelBuilder.Entity("ProductApplication.Models.Entities.SparePart", b =>
+                {
+                    b.Navigation("ProductSpareParts");
                 });
 #pragma warning restore 612, 618
         }
