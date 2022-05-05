@@ -1,0 +1,65 @@
+﻿@model List<SparePart>
+
+@section Styles{
+<link rel="stylesheet" href="~/css/multiselect.css">
+}
+
+
+<div class="content">
+    <h2 class="text-center">Yedek Parçalar</h2>
+    <div class="container text-left">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <input type="hidden" id="id" name=@ViewBag.ProductId value=@ViewBag.ProductId />
+                <form asp-action="AddSparePartToProduct" asp-controller="Product">
+                    <select name="selectedSparePart[]" id="selector" multiple="multiple" class="3col active form-control">
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            <option value=@Model[i].Id>@Model[i].Name</option>
+                        }
+                    </select>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts
+{
+<script>
+    $(document).ready(function () {
+        $('select[multiple].active.3col').multiselect({
+            columns: 3,
+            placeholder: 'Yedek Parça Seç',
+            search: true,
+            searchOptions: {
+                'default': 'Yedek Parça Ara'
+            },
+            selectAll: true
+        });
+    });
+</script>
+@*<script>
+    var selectorList = []
+    $(document).ready(function () {
+        $('#selector').selector();
+        $("#hepsiniSec").on("click", function () {
+            if ($(this).is(':checked')) {
+                $("#select2 > option").prop("selected", "selected");
+                $("#select2").trigger("change");
+            }
+            else {
+                $("#select2 > option").removeAttr("selected");
+                $("#select2").trigger("change");
+            }
+        });
+    });*@
+</script>
+<script src="~/js/popper.min.js"></script>
+<script src="~/js/jquery.multiselect.js"></script>
+<script src="~/js/main.js"></script>
+}

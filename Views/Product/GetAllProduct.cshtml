@@ -20,7 +20,7 @@
             <h2>Ürünler</h2>
             <br />
             <div class="d-flex justify-content-end p-3">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="getbootstrap">Yeni Ürün Ekle</button>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="getbootstrap">Yeni Ürün Ekle</button>
             </div>
             <table class="table table-striped">
                 <thead>
@@ -59,9 +59,9 @@
                                 </a>
                             </td>
                             <td>
-                                <div class="d-flex justify-content-end p-3">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sparePartModal" data-whatever="getbootstrap">Yedek Parça Ekle</button>
-                                </div>
+                                <a class="btn btn-outline-dark btn-block" asp-controller="Product" asp-action="AddSparePartToProduct" asp-route-id="@Model[i-1].Id">
+                                    Yedek Parça Ekle
+                                </a>
                             </td>
                         </tr>
                     }
@@ -106,38 +106,4 @@
         </div>
     </div>
     <!--add product modal end-->
-    <!--add spare part to product modal-->
-    <div class="modal fade" id="sparePartModal" tabindex="-1" role="dialog" aria-labelledby="sparePartModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="sparePartModalLabel">Ürün Ekle</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="content">
-                        <h2 class="text-center">Multi-Select #5</h2>
-                        <div class="container text-left">
-                            <div class="row justify-content-center">
-                                <div class="col-md-5">
-                                    <select name="basic[]" multiple="multiple" class="3col active form-control">
-                                        <option value="AL">Alabama</option>
-                                        <option value="AK">Alaska</option>
-                                        <option value="AZ">Arizona</option>
-                                        <option value="AR">Arkansas</option>
-                                        <option value="CA">California</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!--add spare part to product modal end-->
-
 </div>

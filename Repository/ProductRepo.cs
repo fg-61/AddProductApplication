@@ -1,4 +1,5 @@
-﻿using ProductApplication.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using ProductApplication.Data;
 using ProductApplication.Models.Entities;
 using ProductApplication.Repository.Abstracts;
 using System;
